@@ -1,6 +1,4 @@
-let roundsPlayed = 0;
-
-let results = {
+let resultsObj = {
   wins: 0,
   losses: 0,
   draws: 0,
@@ -16,39 +14,39 @@ function getComputerChoice() {
 function determineResult(playerChoice, computerChoice) {
   let message;
   if (playerChoice === computerChoice) {
-    results = { ...results, draws: results.draws + 1 };
+    resultsObj = { ...resultsObj, draws: resultsObj.draws + 1 };
     message = `Draw!  ${playerChoice} matches ${computerChoice}.`;
   }
 
   if (playerChoice === "rock") {
     if (computerChoice === "scissors") {
-      results = { ...results, wins: results.wins + 1 };
+      resultsObj = { ...resultsObj, wins: resultsObj.wins + 1 };
       message = `You win!  ${playerChoice} beats ${computerChoice}.`;
     }
     if (computerChoice === "paper") {
-      results = { ...results, losses: results.losses + 1 };
+      resultsObj = { ...resultsObj, losses: resultsObj.losses + 1 };
       message = `You lose!  ${playerChoice} loses to ${computerChoice}.`;
     }
   }
 
   if (playerChoice === "paper") {
     if (computerChoice === "rock") {
-      results = { ...results, wins: results.wins + 1 };
+      resultsObj = { ...resultsObj, wins: resultsObj.wins + 1 };
       message = `You win!  ${playerChoice} beats ${computerChoice}.`;
     }
     if (computerChoice === "scissors") {
-      results = { ...results, losses: results.losses + 1 };
+      resultsObj = { ...resultsObj, losses: resultsObj.losses + 1 };
       message = `You lose!  ${playerChoice} loses to ${computerChoice}.`;
     }
   }
 
   if (playerChoice === "scissors") {
     if (computerChoice === "paper") {
-      results = { ...results, wins: results.wins + 1 };
+      resultsObj = { ...resultsObj, wins: resultsObj.wins + 1 };
       message = `You win!  ${playerChoice} beats ${computerChoice}.`;
     }
     if (computerChoice === "rock") {
-      results = { ...results, losses: results.losses + 1 };
+      resultsObj = { ...resultsObj, losses: resultsObj.losses + 1 };
       message = `You lose!  ${playerChoice} loses to ${computerChoice}.`;
     }
   }
@@ -70,10 +68,25 @@ function playRound() {
     playRound();
   } else {
     const result = determineResult(playerChoice, computerChoice);
-    console.log(result);
-    roundsPlayed++;
-    if (roundsPlayed < 5) playRound();
+    alert(result);
   }
 }
 
-playRound();
+function game() {
+  for (let i = 0; i < 5; i++) {
+    playRound();
+  }
+  if (resultsObj.wins > resultsObj.losses) {
+    return alert("YOU WON THE SET!!!!!");
+  }
+  if (resultsObj.losses > resultsObj.wins) {
+    return alert("YOU LOST THE SET....:(");
+  }
+  if (resultsObj.losses === resultsObj.wins) {
+    return alert("TIED SET!!!!  THERE IS NO WINNER....");
+  }
+}
+
+game();
+
+//added game function, removed roundsPlayed variable, adjusted playRound function to be used within the loop in the game function, renamed results to resultsObj
