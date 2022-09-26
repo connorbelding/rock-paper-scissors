@@ -1,2 +1,2 @@
 # rock_paper_scissors
-A rock, paper, scissors game
+A rock, paper, scissors game made with JS.  A great exercise in not only learning JS, but also understanding the process of breaking down an end goal into smaller parts and working through those parts individually.  Instead of thinking "I am making a rock, paper, scissors game", it's more efficient to think "I am making a function that generates a random number and returns 'rock', 'paper', or 'scissors' depending on the value of the random number" or "I am making a function that takes user input from the browser and compares it to the computer's chosen value".  This is an essential skill in any kind of project.
