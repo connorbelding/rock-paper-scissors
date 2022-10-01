@@ -1,0 +1,2 @@
+# rock paper scissors
+A rock, paper scissors game made initially with just Javascript, but later HTML as well to learn about DOM manipulation.  This project taught me about GIT branches mainly.  Creating new branches, switching into those new branches, and merging the new branches with the main branch.  I've never done any of these things before so this project was a great way to learn!
