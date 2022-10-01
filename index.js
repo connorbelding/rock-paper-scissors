@@ -1,4 +1,76 @@
-let resultsObj = {
+const rockButton = document.getElementById('rock');
+const paperButton = document.getElementById('paper');
+const scissorsButton = document.getElementById('scissors');
+
+const scores = {
+  player: 0,
+  cpu: 0
+}
+
+function playRound(playerChoice) {
+  const computerChoice = getComputerChoice();
+
+  if (computerChoice === playerChoice) return showRoundResult('DRAW!!!!')
+
+  if (playerChoice === 'rock') {
+    if (computerChoice === 'paper') {
+      scores.cpu++;
+      showRoundResult('YOU LOSE!!!!')
+    } else {
+      scores.player++;
+      showRoundResult('YOU WIN!!!!')
+    }
+  }
+
+  if (playerChoice === 'paper') {
+    if (computerChoice === 'scissors') {
+      scores.cpu++;
+      showRoundResult('YOU LOSE!!!!')
+    } else {
+      scores.player++;
+      showRoundResult('YOU WIN!!!!')
+    }
+  }
+
+  if (playerChoice === 'scissors') {
+    if (computerChoice === 'rock') {
+      scores.cpu++;
+      showRoundResult('YOU LOSE!!!!')
+    } else {
+      scores.player++;
+      showRoundResult('YOU WIN!!!!')
+    }
+  }
+
+  console.log(scores)
+
+
+
+}
+
+function showRoundResult(message) {
+  const resultsDiv = document.getElementById('results')
+  resultsDiv.textContent = message
+}
+
+function getComputerChoice() {
+  const randNum = Math.random();
+  if (randNum <= 0.33) return "rock";
+  if (randNum > 0.33 && randNum <= 0.66) return "paper";
+  return "scissors";
+}
+
+rockButton.addEventListener('click', () => {
+  playRound('rock')
+})
+paperButton.addEventListener('click', () => {
+  playRound('paper')
+})
+scissorsButton.addEventListener('click', () => {
+  playRound('scissors')
+})
+
+/* let resultsObj = {
   wins: 0,
   losses: 0,
   draws: 0,
@@ -87,6 +159,4 @@ function game() {
   }
 }
 
-game();
-
-//added game function, removed roundsPlayed variable, adjusted playRound function to be used within the loop in the game function, renamed results to resultsObj
+game(); */
