@@ -42,7 +42,7 @@ function playRound(playerChoice) {
     }
   }
 
-  console.log(scores)
+  updateScores();
 
 
 
@@ -58,6 +58,14 @@ function getComputerChoice() {
   if (randNum <= 0.33) return "rock";
   if (randNum > 0.33 && randNum <= 0.66) return "paper";
   return "scissors";
+}
+
+function updateScores() {
+  const playerScoreSpan = document.getElementById('player-score');
+  const cpuScoreSpan = document.getElementById('cpu-score');
+
+  playerScoreSpan.textContent = scores.player;
+  cpuScoreSpan.textContent = scores.cpu;
 }
 
 rockButton.addEventListener('click', () => {
